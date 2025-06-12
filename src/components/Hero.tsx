@@ -5,7 +5,7 @@ const Hero: React.FC = () => {
   return (
     <div className="relative bg-gradient-to-b from-white to-blue-50 overflow-hidden min-h-screen">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="relative z-10 pt-16 lg:pt-24">
+        <div className="relative z-10 pt-28 lg:pt-32">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div className="text-left space-y-8">
               <h1 className="text-6xl lg:text-7xl font-bold tracking-tight text-[#1a237e]">
