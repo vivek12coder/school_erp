@@ -8,6 +8,7 @@ import {
   CalendarIcon,
   ChatBubbleLeftRightIcon,
 } from '@heroicons/react/24/outline';
+import IconBox from '../../components/IconBox';
 
 const AcademicManagement: React.FC = () => {
   const features = [
@@ -15,31 +16,37 @@ const AcademicManagement: React.FC = () => {
       icon: ClipboardDocumentListIcon,
       title: 'Curriculum Management',
       description: 'Design, plan, and track curriculum implementation across all grades and subjects.',
+      color: 'blue' as const,
     },
     {
       icon: PresentationChartLineIcon,
       title: 'Performance Analytics',
       description: 'Track and analyze student performance with AI-powered insights and recommendations.',
+      color: 'green' as const,
     },
     {
       icon: UserGroupIcon,
       title: 'Class Management',
       description: 'Efficiently manage class schedules, attendance, and student groups.',
+      color: 'purple' as const,
     },
     {
       icon: CalendarIcon,
       title: 'Academic Calendar',
       description: 'Plan and organize academic events, exams, and activities.',
+      color: 'orange' as const,
     },
     {
       icon: ChatBubbleLeftRightIcon,
       title: 'Parent Communication',
       description: 'Keep parents informed about their children\'s academic progress and school activities.',
+      color: 'pink' as const,
     },
     {
       icon: AcademicCapIcon,
       title: 'Learning Resources',
       description: 'Centralized repository for educational materials and resources.',
+      color: 'teal' as const,
     },
   ];
 
@@ -68,13 +75,17 @@ const AcademicManagement: React.FC = () => {
           </div>
 
           {/* Features Grid */}
-          <div className="mt-20 grid grid-cols-1 gap-12 sm:grid-cols-2 lg:grid-cols-3">
+          <div className="mt-20 grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
             {features.map((feature) => (
               <div
                 key={feature.title}
-                className="bg-white rounded-xl shadow-md p-6 hover:shadow-lg transition-shadow duration-300"
+                className="bg-white rounded-xl shadow-md p-6 hover:shadow-lg transition-all duration-300"
               >
-                <feature.icon className="h-12 w-12 text-blue-600 mb-4" />
+                <IconBox
+                  icon={<feature.icon className="w-full h-full" />}
+                  color={feature.color}
+                  className="mb-4"
+                />
                 <h3 className="text-xl font-semibold text-gray-900 mb-2">
                   {feature.title}
                 </h3>

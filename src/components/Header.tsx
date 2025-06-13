@@ -106,12 +106,12 @@ const Header: React.FC = () => {
     <div className="fixed w-full top-0 z-50">
       <AnnouncementBar />
       <header className="bg-white/90 backdrop-blur-md border-b border-gray-100">
-        <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8" aria-label="Top">
-          <div className="w-full py-4">
+        <nav className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8" aria-label="Top">
+          <div className="w-full py-3 sm:py-4">
             <div className="flex items-center justify-between">
               <div className="flex items-center">
-                <Link to="/" className="flex items-center space-x-3">
-                  <div className="relative w-12 h-12">
+                <Link to="/" className="flex items-center space-x-2 sm:space-x-3">
+                  <div className="relative w-9 h-9 sm:w-10 sm:h-10">
                     <div className="absolute inset-0 bg-gradient-to-r from-blue-600 to-blue-800 rounded-lg transform rotate-3"></div>
                     <img
                       className="relative w-full h-full object-cover rounded-lg transform -rotate-2 hover:rotate-0 transition-transform duration-300"
@@ -119,57 +119,61 @@ const Header: React.FC = () => {
                       alt="AI Education"
                     />
                   </div>
-                  <span className="text-2xl font-bold bg-gradient-to-r from-blue-600 to-blue-800 bg-clip-text text-transparent">
-                    School ERP
+                  <span className="text-lg sm:text-xl font-bold bg-gradient-to-r from-blue-600 to-blue-800 bg-clip-text text-transparent animate-gradient">
+                    Edusphere
                   </span>
                 </Link>
               </div>
 
               {/* Desktop Navigation */}
-              <div className="hidden lg:flex lg:items-center lg:space-x-6" ref={dropdownRef}>
+              <div className="hidden lg:flex lg:items-center lg:space-x-6">
                 {navigation.map((item) => (
                   <div
                     key={item.name}
-                    className="relative"
+                    className="relative group"
                   >
                     {item.dropdown ? (
                       <button
                         onClick={() => handleDropdownClick(item.name)}
-                        className="group inline-flex items-center text-base font-medium text-gray-700 hover:text-blue-600 px-3 py-2 rounded-md transition-colors"
+                        className="group inline-flex items-center text-sm font-medium text-gray-700 hover:text-blue-600 px-3 py-2 rounded-md transition-colors"
+                        onMouseEnter={() => setActiveDropdown(item.name)}
                       >
                         {item.name}
                         <ChevronDownIcon
-                          className={`ml-1 h-4 w-4 transition-transform duration-200 ${
-                            activeDropdown === item.name ? 'rotate-180' : ''
-                          }`}
+                          className={`ml-1 h-4 w-4 transition-transform duration-200 group-hover:rotate-180`}
                         />
                       </button>
                     ) : (
                       <Link
                         to={item.href || '#'}
-                        className="text-base font-medium text-gray-700 hover:text-blue-600 px-3 py-2 rounded-md transition-colors"
+                        className="text-sm font-medium text-gray-700 hover:text-blue-600 px-3 py-2 rounded-md transition-colors"
                       >
                         {item.name}
                       </Link>
                     )}
 
-                    {item.dropdown && activeDropdown === item.name && (
-                      <div className="absolute left-0 mt-2 w-72 rounded-xl shadow-lg py-1 bg-white ring-1 ring-black ring-opacity-5 transform transition-all duration-300">
+                    {item.dropdown && (
+                      <div 
+                        className={`absolute left-0 mt-2 w-64 rounded-xl shadow-lg py-1 bg-white ring-1 ring-black ring-opacity-5 transition-all duration-200 transform origin-top-left
+                          ${activeDropdown === item.name ? 'scale-100 opacity-100' : 'scale-95 opacity-0 pointer-events-none'}
+                        `}
+                        onMouseLeave={() => setActiveDropdown(null)}
+                      >
                         {item.dropdown.map((subItem) => (
                           <Link
                             key={subItem.name}
                             to={subItem.href}
-                            className="group flex items-start px-4 py-3 hover:bg-blue-50"
+                            className="group flex items-start px-4 py-3 hover:bg-blue-50 transition-colors duration-200"
                             onClick={() => setActiveDropdown(null)}
                           >
                             <div className="flex-shrink-0">
-                              <subItem.icon className="h-6 w-6 text-blue-600" />
+                              <subItem.icon className="h-5 w-5 text-blue-600 group-hover:scale-110 transition-transform duration-200" />
                             </div>
-                            <div className="ml-4">
-                              <p className="text-sm font-medium text-gray-900 group-hover:text-blue-600">
+                            <div className="ml-3">
+                              <p className="text-sm font-medium text-gray-900 group-hover:text-blue-600 transition-colors duration-200">
                                 {subItem.name}
                               </p>
-                              <p className="mt-1 text-xs text-gray-500">
+                              <p className="mt-1 text-xs text-gray-500 group-hover:text-blue-500 transition-colors duration-200">
                                 {subItem.description}
                               </p>
                             </div>
@@ -179,15 +183,13 @@ const Header: React.FC = () => {
                     )}
                   </div>
                 ))}
-              </div>
 
-              {/* CTA Button */}
-              <div className="hidden lg:flex lg:items-center">
+                {/* CTA Button */}
                 <Link
                   to="/demo"
-                  className="ml-8 inline-flex items-center justify-center px-6 py-2.5 border border-transparent rounded-full text-base font-medium text-white bg-gradient-to-r from-blue-600 to-blue-800 hover:from-blue-700 hover:to-blue-900 transform hover:scale-105 transition-all duration-200 shadow-md hover:shadow-xl"
+                  className="ml-6 inline-flex items-center justify-center px-5 py-2 border border-transparent rounded-full text-sm font-medium text-white bg-gradient-to-r from-blue-600 to-blue-800 hover:from-blue-700 hover:to-blue-900 transform hover:scale-105 transition-all duration-200 shadow-md hover:shadow-xl"
                 >
-                  <SparklesIcon className="w-5 h-5 mr-2" />
+                  <SparklesIcon className="w-4 h-4 mr-2" />
                   Request Demo
                 </Link>
               </div>
@@ -196,7 +198,7 @@ const Header: React.FC = () => {
               <div className="flex lg:hidden">
                 <button
                   type="button"
-                  className="inline-flex items-center justify-center p-2 rounded-md text-gray-700 hover:text-blue-600 hover:bg-blue-50"
+                  className="inline-flex items-center justify-center p-2 rounded-md text-gray-700 hover:text-blue-600 hover:bg-blue-50 transition-colors duration-200"
                   onClick={() => setIsOpen(!isOpen)}
                 >
                   <span className="sr-only">Open main menu</span>
@@ -212,35 +214,35 @@ const Header: React.FC = () => {
 
           {/* Mobile menu */}
           <div className={`lg:hidden ${isOpen ? 'block' : 'hidden'}`}>
-            <div className="pt-2 pb-4 space-y-1">
+            <div className="pt-2 pb-4 space-y-1 bg-white">
               {navigation.map((item) => (
                 <div key={item.name}>
                   {item.dropdown ? (
-                    <>
+                    <div>
                       <button
                         onClick={() => handleDropdownClick(item.name)}
                         className="w-full flex items-center justify-between px-4 py-2 text-base font-medium text-gray-700 hover:text-blue-600 hover:bg-blue-50"
                       >
                         {item.name}
                         <ChevronDownIcon
-                          className={`ml-1 h-4 w-4 transition-transform duration-200 ${
+                          className={`ml-2 h-5 w-5 transform transition-transform duration-200 ${
                             activeDropdown === item.name ? 'rotate-180' : ''
                           }`}
                         />
                       </button>
                       {activeDropdown === item.name && (
-                        <div className="pl-4">
+                        <div className="space-y-1 px-4 py-2">
                           {item.dropdown.map((subItem) => (
                             <Link
                               key={subItem.name}
                               to={subItem.href}
-                              className="flex items-center px-4 py-2 text-sm text-gray-700 hover:text-blue-600 hover:bg-blue-50"
+                              className="flex items-center px-4 py-2 text-sm text-gray-700 hover:text-blue-600 hover:bg-blue-50 rounded-lg"
                               onClick={() => {
                                 setActiveDropdown(null);
                                 setIsOpen(false);
                               }}
                             >
-                              <subItem.icon className="h-5 w-5 mr-2 text-blue-600" />
+                              <subItem.icon className="h-5 w-5 mr-3 text-blue-600" />
                               <div>
                                 <div className="font-medium">{subItem.name}</div>
                                 <div className="text-xs text-gray-500">{subItem.description}</div>
@@ -249,7 +251,7 @@ const Header: React.FC = () => {
                           ))}
                         </div>
                       )}
-                    </>
+                    </div>
                   ) : (
                     <Link
                       to={item.href || '#'}
@@ -261,10 +263,10 @@ const Header: React.FC = () => {
                   )}
                 </div>
               ))}
-              <div className="px-4 pt-4">
+              <div className="px-4 py-3">
                 <Link
                   to="/demo"
-                  className="w-full flex items-center justify-center px-6 py-2.5 border border-transparent rounded-full text-base font-medium text-white bg-gradient-to-r from-blue-600 to-blue-800 hover:from-blue-700 hover:to-blue-900 shadow-md"
+                  className="flex items-center justify-center w-full px-4 py-2 text-base font-medium text-white bg-gradient-to-r from-blue-600 to-blue-800 rounded-full hover:from-blue-700 hover:to-blue-900 transition-all duration-200"
                   onClick={() => setIsOpen(false)}
                 >
                   <SparklesIcon className="w-5 h-5 mr-2" />

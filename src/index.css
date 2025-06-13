@@ -7,6 +7,7 @@
 @layer base {
   html {
     font-family: 'Inter', system-ui, sans-serif;
+    font-size: 80%; /* Reduces all text by 20% universally */
   }
   h1, h2, h3, h4, h5, h6 {
     font-family: 'Montserrat', system-ui, sans-serif;
@@ -23,4 +24,9 @@
   .nav-link {
     @apply text-gray-700 hover:text-blue-600 px-3 py-2 text-sm font-medium transition-colors duration-200;
   }
+}
+
+/* Preserve original font size for specific elements if needed */
+.preserve-text-size {
+  font-size: 125%; /* This will bring text back to original size if needed */
 }

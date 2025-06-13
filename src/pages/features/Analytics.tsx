@@ -8,6 +8,7 @@ import {
   UserGroupIcon,
   CurrencyDollarIcon,
 } from '@heroicons/react/24/outline';
+import IconBox from '../../components/IconBox';
 
 const Analytics: React.FC = () => {
   const features = [
@@ -15,31 +16,37 @@ const Analytics: React.FC = () => {
       icon: ChartBarIcon,
       title: 'Performance Analytics',
       description: 'Track and analyze student performance across multiple parameters and timeframes.',
+      color: 'blue' as const,
     },
     {
       icon: PresentationChartLineIcon,
       title: 'Trend Analysis',
       description: 'Identify patterns and trends in academic performance, attendance, and behavior.',
+      color: 'green' as const,
     },
     {
       icon: DocumentChartBarIcon,
       title: 'Custom Reports',
       description: 'Generate customized reports with interactive visualizations and insights.',
+      color: 'purple' as const,
     },
     {
       icon: ArrowTrendingUpIcon,
       title: 'Predictive Insights',
       description: 'Forecast academic outcomes and identify areas needing intervention.',
+      color: 'orange' as const,
     },
     {
       icon: UserGroupIcon,
       title: 'Behavioral Analytics',
       description: 'Monitor and analyze student engagement and classroom dynamics.',
+      color: 'pink' as const,
     },
     {
       icon: CurrencyDollarIcon,
       title: 'Financial Analytics',
       description: 'Track financial metrics, budget utilization, and resource allocation.',
+      color: 'teal' as const,
     },
   ];
 
@@ -89,51 +96,71 @@ const Analytics: React.FC = () => {
         />
       </Helmet>
 
-      <div className="min-h-screen bg-gradient-to-b from-white to-blue-50 pt-24">
+      <div className="min-h-screen bg-gradient-to-b from-white to-blue-50 pt-28">
         {/* Hero Section */}
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 py-16 sm:py-20">
           <div className="text-center">
-            <h1 className="text-4xl font-bold text-gray-900 sm:text-5xl">
+            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight">
               Analytics
-              <span className="block text-blue-600 mt-2">Data-Driven Decision Making</span>
+              <span className="block text-blue-600 mt-4">Data-Driven Decision Making</span>
             </h1>
-            <p className="mt-6 text-xl text-gray-600 max-w-3xl mx-auto">
+            <p className="mt-8 text-xl text-gray-600 max-w-3xl mx-auto">
               Transform raw data into actionable insights with our comprehensive
               analytics platform designed specifically for educational institutions.
             </p>
           </div>
 
           {/* Features Grid */}
-          <div className="mt-20 grid grid-cols-1 gap-12 sm:grid-cols-2 lg:grid-cols-3">
-            {features.map((feature) => (
-              <div
-                key={feature.title}
-                className="bg-white rounded-xl shadow-md p-6 hover:shadow-lg transition-shadow duration-300"
-              >
-                <feature.icon className="h-12 w-12 text-blue-600 mb-4" />
-                <h3 className="text-xl font-semibold text-gray-900 mb-2">
-                  {feature.title}
-                </h3>
-                <p className="text-gray-600">{feature.description}</p>
-              </div>
-            ))}
+          <div className="mt-20 sm:mt-24">
+            <div className="grid grid-cols-1 gap-10 sm:grid-cols-2 lg:grid-cols-3">
+              {features.map((feature) => (
+                <div
+                  key={feature.title}
+                  className="group relative bg-white p-8 rounded-2xl transition-all duration-300 ease-in-out
+                    hover:-translate-y-2 hover:shadow-2xl cursor-pointer
+                    before:absolute before:inset-0 before:rounded-2xl before:bg-gradient-to-br 
+                    before:from-white before:to-gray-50/50 before:opacity-0 
+                    hover:before:opacity-100 before:transition-all before:duration-300
+                    after:absolute after:inset-0 after:rounded-2xl after:border-2 
+                    after:border-transparent hover:after:border-blue-100
+                    after:transition-colors after:duration-300
+                    hover:bg-white/80 backdrop-blur-sm"
+                >
+                  <div className="relative z-10">
+                    <IconBox
+                      icon={<feature.icon className="w-full h-full" />}
+                      color={feature.color}
+                      className="mb-7"
+                    />
+                    <h3 className="text-xl font-semibold text-gray-900 mb-3 transition-colors duration-300
+                      group-hover:text-blue-600">
+                      {feature.title}
+                    </h3>
+                    <p className="text-gray-600 transition-colors duration-300
+                      group-hover:text-gray-700">
+                      {feature.description}
+                    </p>
+                  </div>
+                </div>
+              ))}
+            </div>
           </div>
 
           {/* Dashboard Section */}
-          <div className="mt-24">
-            <h2 className="text-3xl font-bold text-gray-900 text-center mb-12">
+          <div className="mt-28">
+            <h2 className="text-3xl font-bold text-gray-900 text-center mb-16">
               Interactive Dashboards
             </h2>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
               {dashboards.map((dashboard) => (
-                <div key={dashboard.title} className="bg-white rounded-xl shadow-md p-8">
-                  <h3 className="text-xl font-semibold text-gray-900 mb-6">
+                <div key={dashboard.title} className="bg-white rounded-2xl shadow-md p-8">
+                  <h3 className="text-xl font-semibold text-gray-900 mb-8">
                     {dashboard.title}
                   </h3>
-                  <ul className="space-y-4">
+                  <ul className="space-y-5">
                     {dashboard.features.map((feature) => (
                       <li key={feature} className="flex items-start">
-                        <span className="flex-shrink-0 h-1.5 w-1.5 rounded-full bg-blue-600 mt-2 mr-2"></span>
+                        <span className="flex-shrink-0 h-2 w-2 rounded-full bg-blue-600 mt-2.5 mr-3"></span>
                         <span className="text-gray-600">{feature}</span>
                       </li>
                     ))}
@@ -144,7 +171,7 @@ const Analytics: React.FC = () => {
           </div>
 
           {/* Visualization Section */}
-          <div className="mt-24 bg-white rounded-2xl shadow-xl p-8 lg:p-12">
+          <div className="mt-28 bg-white rounded-2xl shadow-xl p-10 lg:p-14">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
               <div>
                 <h2 className="text-3xl font-bold text-gray-900 mb-6">
@@ -191,7 +218,7 @@ const Analytics: React.FC = () => {
           </div>
 
           {/* CTA Section */}
-          <div className="mt-24 bg-blue-600 rounded-2xl shadow-xl p-8 lg:p-12 text-center">
+          <div className="mt-28 bg-blue-600 rounded-2xl shadow-xl p-10 lg:p-14 text-center">
             <h2 className="text-3xl font-bold text-white mb-6">
               Make Data-Driven Decisions Today
             </h2>

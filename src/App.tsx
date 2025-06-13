@@ -6,6 +6,7 @@ import Footer from './components/Footer';
 import Home from './pages/Home';
 import Contact from './pages/Contact';
 import About from './pages/About';
+import Solutions from './pages/solutions/Solutions';
 import AcademicManagement from './pages/solutions/AcademicManagement';
 import StudentPortal from './pages/solutions/StudentPortal';
 import StaffPortal from './pages/solutions/StaffPortal';
@@ -13,17 +14,18 @@ import FinanceManagement from './pages/solutions/FinanceManagement';
 import AIIntegration from './pages/features/AIIntegration';
 import Analytics from './pages/features/Analytics';
 
-function App() {
+const App: React.FC = () => {
   return (
     <HelmetProvider>
       <Router>
-        <div className="min-h-screen bg-gray-50 flex flex-col">
+        <div className="flex flex-col min-h-screen">
           <Header />
-          <main className="pt-16 flex-grow">
+          <main className="flex-grow pt-16">
             <Routes>
               <Route path="/" element={<Home />} />
               <Route path="/contact" element={<Contact />} />
               <Route path="/about" element={<About />} />
+              <Route path="/solutions" element={<Solutions />} />
               <Route path="/solutions/academic" element={<AcademicManagement />} />
               <Route path="/solutions/student" element={<StudentPortal />} />
               <Route path="/solutions/staff" element={<StaffPortal />} />
@@ -42,6 +44,6 @@ function App() {
       </Router>
     </HelmetProvider>
   );
-}
+};
 
 export default App;

@@ -1,87 +1,75 @@
 import React from 'react';
 import {
-  AcademicCapIcon,
-  UserGroupIcon,
-  ClipboardDocumentCheckIcon,
-  CurrencyDollarIcon,
-  DocumentTextIcon,
-  BookOpenIcon,
-  TruckIcon,
-  ChatBubbleBottomCenterTextIcon,
+  ChartBarIcon,
+  CloudArrowUpIcon,
+  LockClosedIcon,
+  ServerIcon,
 } from '@heroicons/react/24/outline';
+import IconBox from './IconBox';
 
 const features = [
   {
-    name: 'Student Management',
-    description: 'Comprehensive student profiles, attendance tracking, and performance monitoring.',
-    icon: AcademicCapIcon,
+    name: 'Analytics',
+    description: 'Get detailed insights into student performance, attendance, and financial metrics.',
+    icon: ChartBarIcon,
+    color: 'blue' as const,
   },
   {
-    name: 'Staff Management',
-    description: 'Streamline HR processes, track performance, and manage staff records efficiently.',
-    icon: UserGroupIcon,
+    name: 'Cloud Storage',
+    description: 'All your data is securely stored in the cloud and accessible from anywhere.',
+    icon: CloudArrowUpIcon,
+    color: 'green' as const,
   },
   {
-    name: 'Attendance System',
-    description: 'Automated attendance tracking with real-time notifications and reporting.',
-    icon: ClipboardDocumentCheckIcon,
+    name: 'Security',
+    description: 'Enterprise-grade security with role-based access control and data encryption.',
+    icon: LockClosedIcon,
+    color: 'red' as const,
   },
   {
-    name: 'Fee Management',
-    description: 'Simplified fee collection, online payments, and financial reporting.',
-    icon: CurrencyDollarIcon,
-  },
-  {
-    name: 'Examination System',
-    description: 'Digital exam management, result processing, and performance analytics.',
-    icon: DocumentTextIcon,
-  },
-  {
-    name: 'Library Management',
-    description: 'Digital catalog, borrowing system, and resource tracking.',
-    icon: BookOpenIcon,
-  },
-  {
-    name: 'Transport Management',
-    description: 'Route planning, vehicle tracking, and transport fee management.',
-    icon: TruckIcon,
-  },
-  {
-    name: 'Parent Communication',
-    description: 'Direct messaging, announcements, and progress updates for parents.',
-    icon: ChatBubbleBottomCenterTextIcon,
+    name: 'API Access',
+    description: 'Integrate with your existing systems using our comprehensive API.',
+    icon: ServerIcon,
+    color: 'yellow' as const,
   },
 ];
 
 const Features: React.FC = () => {
   return (
-    <div className="py-12 bg-white">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="lg:text-center">
-          <h2 className="text-base text-primary font-semibold tracking-wide uppercase">Features</h2>
-          <p className="mt-2 text-3xl leading-8 font-bold tracking-tight text-gray-900 sm:text-4xl">
-            Everything you need to manage your school
-          </p>
-          <p className="mt-4 max-w-2xl text-xl text-gray-500 lg:mx-auto">
-            Our comprehensive ERP solution provides all the tools you need to streamline your school's operations.
+    <div className="bg-white py-12 sm:py-16">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div className="text-center">
+          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold tracking-tight text-gray-900">
+            Powerful Features for Modern Education
+          </h2>
+          <p className="mx-auto mt-3 max-w-2xl text-base sm:text-lg text-gray-500 sm:mt-4">
+            Everything you need to manage your educational institution efficiently
           </p>
         </div>
 
-        <div className="mt-10">
-          <div className="grid grid-cols-1 gap-10 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-            {features.map((feature) => (
-              <div key={feature.name} className="relative">
-                <div className="flex items-center space-x-4">
-                  <div className="flex-shrink-0">
-                    <div className="flex items-center justify-center h-12 w-12 rounded-md bg-primary text-white">
-                      <feature.icon className="h-6 w-6" aria-hidden="true" />
-                    </div>
-                  </div>
-                  <div>
-                    <h3 className="text-lg font-medium text-gray-900">{feature.name}</h3>
-                    <p className="mt-2 text-base text-gray-500">{feature.description}</p>
-                  </div>
-                </div>
+        <div className="mt-10 sm:mt-12">
+          <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4 sm:gap-8">
+            {features.map((feature, index) => (
+              <div 
+                key={feature.name}
+                className="relative group bg-white p-4 sm:p-6 rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1"
+                style={{
+                  animationDelay: `${index * 100}ms`,
+                }}
+              >
+                <IconBox
+                  icon={<feature.icon className="w-full h-full" />}
+                  color={feature.color}
+                  className="mb-4"
+                />
+                
+                <h3 className="text-base sm:text-lg font-semibold text-gray-900 group-hover:text-blue-600 transition-colors duration-300">
+                  {feature.name}
+                </h3>
+                
+                <p className="mt-2 text-sm text-gray-500 group-hover:text-gray-600 line-clamp-3 sm:line-clamp-none">
+                  {feature.description}
+                </p>
               </div>
             ))}
           </div>
