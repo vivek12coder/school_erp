@@ -206,12 +206,12 @@ const Analytics: React.FC = () => {
                   </ul>
                 </div>
               </div>
-              <div className="relative">
+              <div className="relative max-w-lg mx-auto">
                 <div className="absolute inset-0 bg-gradient-to-r from-blue-100 to-blue-50 rounded-2xl transform rotate-3"></div>
                 <img
-                  src="/analytics-dashboard.png"
+                  src="/Advanced Visualization Tools Infographic.png"
                   alt="Analytics Dashboard"
-                  className="relative rounded-2xl shadow-lg transform -rotate-2 hover:rotate-0 transition-transform duration-300"
+                  className="relative w-full h-auto max-h-[300px] object-contain rounded-2xl shadow-lg transform -rotate-2 hover:rotate-0 transition-transform duration-300"
                 />
               </div>
             </div>
