@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import ScrollAnimation from './ScrollAnimation';
 
 const Hero: React.FC = () => {
   return (
@@ -8,48 +9,57 @@ const Hero: React.FC = () => {
         <div className="relative z-10 pt-28 lg:pt-32">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
             <div className="text-left space-y-6 md:space-y-8">
-              <h1 className="text-3xl sm:text-4xl lg:text-6xl font-bold tracking-tight text-[#1a237e]">
-                School ERP
-                <span className="inline-block">
-                  <sup className="text-sm align-super">©</sup>
-                </span>
-              </h1>
+              <ScrollAnimation direction="left">
+                <h1 className="text-3xl sm:text-4xl lg:text-6xl font-bold tracking-tight text-[#1a237e]">
+                  School ERP
+                  <span className="inline-block">
+                    <sup className="text-sm align-super">©</sup>
+                  </span>
+                </h1>
+              </ScrollAnimation>
               
               <div className="space-y-4 md:space-y-6">
-                <h2 className="text-lg sm:text-xl lg:text-2xl text-blue-600 font-medium">
-                  An advanced and comprehensive school management software
-                </h2>
+                <ScrollAnimation direction="left" delay={0.2}>
+                  <h2 className="text-lg sm:text-xl lg:text-2xl text-blue-600 font-medium">
+                    An advanced and comprehensive school management software
+                  </h2>
+                </ScrollAnimation>
                 
-                <p className="text-sm sm:text-base lg:text-lg text-gray-600 max-w-2xl">
-                  Transform your educational institution with our state-of-the-art ERP system. 
-                  Streamline administrative tasks, enhance communication, and focus on delivering quality education.
-                </p>
-              </div>
+                <ScrollAnimation direction="left" delay={0.4}>
+                  <p className="text-sm sm:text-base lg:text-lg text-gray-600 max-w-2xl">
+                    Transform your educational institution with our state-of-the-art ERP system. 
+                    Streamline administrative tasks, enhance communication, and focus on delivering quality education.
+                  </p>
+                </ScrollAnimation>
 
-              <div className="flex flex-col sm:flex-row gap-4 sm:gap-6">
-                <Link
-                  to="/request-demo"
-                  className="w-full sm:w-auto text-center inline-flex items-center justify-center px-5 py-2.5 sm:px-7 sm:py-3.5 border border-transparent text-sm sm:text-base font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 transition-colors duration-200"
-                >
-                  Request Demo
-                </Link>
-                <Link
-                  to="/contact"
-                  className="w-full sm:w-auto text-center inline-flex items-center justify-center px-5 py-2.5 sm:px-7 sm:py-3.5 border-2 border-blue-600 text-sm sm:text-base font-medium rounded-md text-blue-600 bg-transparent hover:bg-blue-50 transition-colors duration-200"
-                >
-                  Contact Sales
-                </Link>
+                <ScrollAnimation direction="up" delay={0.6}>
+                  <div className="flex flex-wrap gap-4 mt-8">
+                    <Link
+                      to="/request-demo"
+                      className="btn-primary transform hover:scale-105 transition-transform duration-200"
+                    >
+                      Request Demo
+                    </Link>
+                    <Link
+                      to="/contact"
+                      className="btn-outline transform hover:scale-105 transition-transform duration-200"
+                    >
+                      Contact Sales
+                    </Link>
+                  </div>
+                </ScrollAnimation>
               </div>
             </div>
 
-            <div className="relative mt-8 lg:mt-0">
-              <div className="absolute inset-0 bg-gradient-to-r from-blue-100 to-blue-50 rounded-2xl transform rotate-3"></div>
-              <img
-                src="/SCHOOL-ERP-MODULES.png"
-                alt="School ERP Modules Overview"
-                className="relative w-full max-w-lg mx-auto rounded-2xl shadow-xl transform -rotate-2 hover:rotate-0 transition-transform duration-300"
-              />
-            </div>
+            <ScrollAnimation direction="right" delay={0.3}>
+              <div className="relative">
+                <img
+                  src="/SCHOOL-ERP-MODULES.png"
+                  alt="School ERP System"
+                  className="w-full h-auto max-w-lg mx-auto"
+                />
+              </div>
+            </ScrollAnimation>
           </div>
         </div>
       </div>

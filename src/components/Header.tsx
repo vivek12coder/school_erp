@@ -75,13 +75,13 @@ const Header: React.FC = () => {
 
   const features = [
     {
-      name: 'AI Integration',
+      name: 'Model 1 - AI Integration',
       description: 'Powered by advanced artificial intelligence',
       href: '/features/ai-integration',
       icon: AcademicCapIcon,
     },
     {
-      name: 'Analytics',
+      name: 'Model 2 - Analytics',
       description: 'Comprehensive data analysis and insights',
       href: '/features/analytics',
       icon: ChartBarIcon,
@@ -97,7 +97,7 @@ const Header: React.FC = () => {
       name: 'Features',
       dropdown: features,
     },
-    { name: 'Pricing', href: '/pricing' },
+  
     { name: 'About', href: '/about' },
     { name: 'Contact', href: '/contact' },
   ];

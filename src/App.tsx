@@ -1,6 +1,9 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { HelmetProvider } from 'react-helmet-async';
+import withScrollAnimation from './components/withScrollAnimation';
+
+// Import components
 import Header from './components/Header';
 import Footer from './components/Footer';
 import Home from './pages/Home';
@@ -14,6 +17,18 @@ import FinanceManagement from './pages/solutions/FinanceManagement';
 import AIIntegration from './pages/features/AIIntegration';
 import Analytics from './pages/features/Analytics';
 
+// Apply scroll animations to pages
+const AnimatedHome = withScrollAnimation(Home);
+const AnimatedContact = withScrollAnimation(Contact);
+const AnimatedAbout = withScrollAnimation(About);
+const AnimatedSolutions = withScrollAnimation(Solutions);
+const AnimatedAcademicManagement = withScrollAnimation(AcademicManagement);
+const AnimatedStudentPortal = withScrollAnimation(StudentPortal);
+const AnimatedStaffPortal = withScrollAnimation(StaffPortal);
+const AnimatedFinanceManagement = withScrollAnimation(FinanceManagement);
+const AnimatedAIIntegration = withScrollAnimation(AIIntegration);
+const AnimatedAnalytics = withScrollAnimation(Analytics);
+
 const App: React.FC = () => {
   return (
     <HelmetProvider>
@@ -22,16 +37,16 @@ const App: React.FC = () => {
           <Header />
           <main className="flex-grow pt-16">
             <Routes>
-              <Route path="/" element={<Home />} />
-              <Route path="/contact" element={<Contact />} />
-              <Route path="/about" element={<About />} />
-              <Route path="/solutions" element={<Solutions />} />
-              <Route path="/solutions/academic" element={<AcademicManagement />} />
-              <Route path="/solutions/student" element={<StudentPortal />} />
-              <Route path="/solutions/staff" element={<StaffPortal />} />
-              <Route path="/solutions/finance" element={<FinanceManagement />} />
-              <Route path="/features/ai-integration" element={<AIIntegration />} />
-              <Route path="/features/analytics" element={<Analytics />} />
+              <Route path="/" element={<AnimatedHome />} />
+              <Route path="/contact" element={<AnimatedContact />} />
+              <Route path="/about" element={<AnimatedAbout />} />
+              <Route path="/solutions" element={<AnimatedSolutions />} />
+              <Route path="/solutions/academic" element={<AnimatedAcademicManagement />} />
+              <Route path="/solutions/student" element={<AnimatedStudentPortal />} />
+              <Route path="/solutions/staff" element={<AnimatedStaffPortal />} />
+              <Route path="/solutions/finance" element={<AnimatedFinanceManagement />} />
+              <Route path="/features/ai-integration" element={<AnimatedAIIntegration />} />
+              <Route path="/features/analytics" element={<AnimatedAnalytics />} />
               <Route path="/features" element={<div>Features Page (Coming Soon)</div>} />
               <Route path="/pricing" element={<div>Pricing Page (Coming Soon)</div>} />
               <Route path="/testimonials" element={<div>Testimonials Page (Coming Soon)</div>} />

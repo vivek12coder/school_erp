@@ -89,7 +89,7 @@ const AIIntegration: React.FC = () => {
   return (
     <>
       <Helmet>
-        <title>AI Integration - School ERP</title>
+        <title>AI Integration</title>
         <meta
           name="description"
           content="Advanced artificial intelligence integration powering next-generation educational experiences."
@@ -211,7 +211,7 @@ const AIIntegration: React.FC = () => {
                 <img
                   src="/ai.png"
                   alt="AI Dashboard"
-                  className="relative rounded-2xl shadow-lg transform -rotate-2 hover:rotate-0 transition-transform duration-300"
+                  className="relative w-full h-auto max-h-[300px] object-contain rounded-2xl shadow-lg transform -rotate-2 hover:rotate-0 transition-transform duration-300"
                 />
               </div>
             </div>
